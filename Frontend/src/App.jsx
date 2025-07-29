@@ -9,12 +9,12 @@ import axios from 'axios'
 import './App.css'
 
 function App() {
-  const [ count, setCount ] = useState(0)
-  const [ code, setCode ] = useState(` function sum() {
+  const [count, setCount] = useState(0)
+  const [code, setCode] = useState(` function sum() {
   return 1 + 1
 }`)
 
-  const [ review, setReview ] = useState(``)
+  const [review, setReview] = useState(``)
 
   useEffect(() => {
     prism.highlightAll()
@@ -29,6 +29,7 @@ function App() {
     <>
       <main>
         <div className="left">
+
           <div className="code">
             <Editor
               value={code}
@@ -37,24 +38,41 @@ function App() {
               padding={10}
               style={{
                 fontFamily: '"Fira code", "Fira Mono", monospace',
-                fontSize: 16,
-                border: "1px solid #ddd",
-                borderRadius: "5px",
-                height: "100%",
-                width: "100%"
+                fontSize: 14,
+                minHeight: '100%',  // ✅ Important for scroll
+                overflow: 'auto',   // ✅ Scroll within Editor
+                whiteSpace: 'pre',
+                outline: 'none',
               }}
             />
           </div>
+
+
+
           <div
             onClick={reviewCode}
-            className="review">Review</div>
+            className="review">
+            Review
+          </div>
+
+          <button onClick={() => navigator.clipboard.writeText(code)} className="copy-btn left-copy">
+            Copy Code
+          </button>
+
+
+
         </div>
         <div className="right">
           <Markdown
 
-            rehypePlugins={[ rehypeHighlight ]}
+            rehypePlugins={[rehypeHighlight]}
 
           >{review}</Markdown>
+
+          <button onClick={() => navigator.clipboard.writeText(review)} className="copy-btn right-copy">
+            Copy Review
+          </button>
+
         </div>
       </main>
     </>

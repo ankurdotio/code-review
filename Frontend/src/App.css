@@ -31,33 +31,100 @@ main .left {
   position: relative;
 }
 
-.left .code,
-.code pre,
-.code pre code {
+
+.left .code {
   height: 100%;
   width: 100%;
-  margin: 0;
+  overflow: auto;
+  /* ✅ Enables scrolling */
   border-radius: 0.7rem;
   background-color: #0c0c0c;
+  /* padding: 1rem; */
+  user-select: text;
+  /* ✅ Allows text selection */
 }
+
+.code pre {
+  white-space: pre;
+  /* ✅ Prevents text from wrapping */
+  overflow: auto;
+  /* ✅ Enables scroll inside code block */
+  margin: 0;
+}
+
+.code pre code {
+  display: block;
+  user-select: text;
+}
+
+
+
+
 
 main .left .review {
   position: absolute;
   bottom: 1rem;
-  right: 1rem;
-  background-color: rgb(219, 219, 255);
+  right: 1.5rem;
+  background: linear-gradient(to right, rgb(219, 219, 255), rgb(219, 219, 255));
   color: #000000;
   padding: 0.5rem 2rem;
   font-weight: 500;
   cursor: pointer;
   user-select: none;
   border-radius: 0.7rem;
+  transition: background-position 0.4s ease, color 0.4s ease;
+  background-size: 200% 100%;
+  background-position: left center;
 }
+
+main .left .review:hover {
+  background-image: linear-gradient(to right, rgb(30, 161, 30), rgb(219, 219, 255));
+  background-position: right center;
+  color: rgb(113, 111, 238);
+}
+
+
+
 
 
 main .right {
   background-color: #343434;
-  padding: 1rem 2rem;
-  font-size: 1.5rem;
+  padding: 1rem 4rem;
+  font-size: 1rem;
   overflow: auto;
+}
+
+
+
+.copy-btn {
+  position: absolute;
+  bottom: 1rem;
+  right: 10rem;
+  padding: 0.5rem 2rem;
+  font-size: 0.9rem;
+  background: linear-gradient(to right, rgb(219, 219, 255), rgb(219, 219, 255));
+  color: #000000;
+  border-radius: 0.7rem;
+  user-select: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-position 0.4s ease, color 0.4s ease;
+  background-size: 200% 100%;
+  background-position: left center;
+}
+
+.copy-btn:hover {
+  background-image: linear-gradient(to right, rgb(30, 161, 30), rgb(219, 219, 255));
+  background-position: right center;
+  color: rgb(113, 111, 238);
+}
+
+.left-copy {
+  position: absolute;
+  bottom: 1rem;
+}
+
+.right-copy {
+  position: absolute;
+  bottom: 2.5rem;
 }
