@@ -39,6 +39,7 @@ main .left {
   margin: 0;
   border-radius: 0.7rem;
   background-color: #0c0c0c;
+  overflow: auto;
 }
 
 main .left .review {
